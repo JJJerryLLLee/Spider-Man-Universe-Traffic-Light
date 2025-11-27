@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spider-Verse Traffic Light</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              comic: ['"Bangers"', 'cursive'],
+              marker: ['"Permanent Marker"', 'cursive'],
+              mono: ['"Roboto Mono"', 'monospace'],
+            },
+            colors: {
+              'spider-black': '#000000',
+              'spider-orange': '#FF4D00', /* Eye-catching Orange Housing */
+              'spider-blue': '#00F3FF',
+              'spider-pink': '#FF004D',
+              'spider-purple': '#9D00FF',
+              'spider-yellow': '#FFE600',
+              'spider-green': '#00FF85',
+              'spider-void': '#0a0a12',
+            },
+            backgroundImage: {
+              'halftone': "radial-gradient(circle, #000 2px, transparent 2.5px)",
+              'halftone-light': "radial-gradient(circle, rgba(255,255,255,0.5) 2px, transparent 2.5px)",
+            },
+            animation: {
+              'glitch-1': 'glitch-1 0.4s infinite linear alternate-reverse',
+              'glitch-2': 'glitch-2 0.3s infinite linear alternate-reverse',
+              'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+              'pop': 'pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+            },
+            keyframes: {
+              'glitch-1': {
+                '0%': { transform: 'translate(0)' },
+                '20%': { transform: 'translate(-5px, 5px)' },
+                '40%': { transform: 'translate(-5px, -5px)' },
+                '60%': { transform: 'translate(5px, 5px)' },
+                '80%': { transform: 'translate(5px, -5px)' },
+                '100%': { transform: 'translate(0)' },
+              },
+              'glitch-2': {
+                '0%': { clipPath: 'inset(10% 0 60% 0)' },
+                '20%': { clipPath: 'inset(80% 0 5% 0)' },
+                '40%': { clipPath: 'inset(40% 0 10% 0)' },
+                '60%': { clipPath: 'inset(10% 0 80% 0)' },
+                '80%': { clipPath: 'inset(30% 0 20% 0)' },
+                '100%': { clipPath: 'inset(10% 0 30% 0)' },
+              },
+              'pop': {
+                '0%': { transform: 'scale(0.8) rotate(-5deg)' },
+                '100%': { transform: 'scale(1) rotate(0deg)' }
+              },
+              'shake': {
+                '10%, 90%': { transform: 'translate3d(-2px, 0, 0) rotate(1deg)' },
+                '20%, 80%': { transform: 'translate3d(4px, 0, 0) rotate(-1deg)' },
+                '30%, 50%, 70%': { transform: 'translate3d(-6px, 0, 0) rotate(2deg)' },
+                '40%, 60%': { transform: 'translate3d(6px, 0, 0) rotate(-2deg)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #000;
+        overflow: hidden;
+      }
+      .no-select {
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      /* Comic Speed Lines */
+      .speed-lines {
+        background: repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 20px,
+          rgba(0,0,0,0.1) 20px,
+          rgba(0,0,0,0.1) 40px
+        );
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
