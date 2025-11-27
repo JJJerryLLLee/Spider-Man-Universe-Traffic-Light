@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="description" content="An interactive Spider-Verse inspired art experience. Tap the light to glitch the multiverse." />
     <meta name="theme-color" content="#000000" />
     <meta property="og:title" content="Spider-Verse Traffic Light" />
@@ -102,14 +102,14 @@
     <style>
       body {
         background-color: #000;
-        overflow: hidden;
         margin: 0;
+        /* Prevent elastic scrolling on Mac/iOS for immersive feel */
+        overscroll-behavior: none;
       }
       .no-select {
         user-select: none;
         -webkit-user-select: none;
       }
-      /* Comic Speed Lines */
       .speed-lines {
         background: repeating-linear-gradient(
           90deg,
@@ -123,7 +123,6 @@
         background-size: 40px 40px;
         will-change: background-position;
       }
-      /* Torn Paper Edge Effect */
       .torn-paper {
         clip-path: polygon(
           0% 0%, 100% 0%, 100% 100%, 0% 100%,
@@ -131,7 +130,6 @@
           0% 10%, 2% 8%, 0% 6%, 3% 4%, 0% 2%
         );
       }
-      /* Performance optimizations */
       .gpu-accelerated {
         transform: translateZ(0);
         will-change: transform;
@@ -140,9 +138,9 @@
   <script type="importmap">
 {
   "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
     "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24"
   }
 }
@@ -150,5 +148,7 @@
 </head>
   <body>
     <div id="root"></div>
+    <!-- CRITICAL FIX: Load the application entry point -->
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

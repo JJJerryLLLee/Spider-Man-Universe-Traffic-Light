@@ -42,7 +42,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className={`relative min-h-screen w-full flex flex-col items-center overflow-hidden transition-colors duration-500 ease-out ${theme.bg}`}>
+    <div className={`relative h-[100dvh] w-full flex flex-col items-center overflow-hidden transition-colors duration-500 ease-out ${theme.bg}`}>
       
       {/* --- LAYER 1: Dynamic Background Textures --- */}
 
