@@ -30,12 +30,16 @@
             backgroundImage: {
               'halftone': "radial-gradient(circle, #000 2px, transparent 2.5px)",
               'halftone-light': "radial-gradient(circle, rgba(255,255,255,0.5) 2px, transparent 2.5px)",
+              'halftone-color': "radial-gradient(circle, currentColor 2px, transparent 2.5px)",
             },
             animation: {
               'glitch-1': 'glitch-1 0.4s infinite linear alternate-reverse',
               'glitch-2': 'glitch-2 0.3s infinite linear alternate-reverse',
               'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
               'pop': 'pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+              'bg-pan': 'bg-pan 30s linear infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 8s ease-in-out infinite 2s',
             },
             keyframes: {
               'glitch-1': {
@@ -63,6 +67,14 @@
                 '20%, 80%': { transform: 'translate3d(4px, 0, 0) rotate(-1deg)' },
                 '30%, 50%, 70%': { transform: 'translate3d(-6px, 0, 0) rotate(2deg)' },
                 '40%, 60%': { transform: 'translate3d(6px, 0, 0) rotate(-2deg)' }
+              },
+              'bg-pan': {
+                '0%': { backgroundPosition: '0% 0%' },
+                '100%': { backgroundPosition: '100% 100%' },
+              },
+              'float': {
+                '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                '50%': { transform: 'translateY(-20px) rotate(5deg)' },
               }
             }
           }
@@ -87,6 +99,9 @@
           rgba(0,0,0,0.1) 20px,
           rgba(0,0,0,0.1) 40px
         );
+      }
+      .halftone-move {
+        background-size: 40px 40px;
       }
     </style>
   <script type="importmap">

@@ -44,17 +44,47 @@ const App: React.FC = () => {
   return (
     <div className={`relative min-h-screen w-full flex flex-col items-center overflow-hidden transition-colors duration-500 ease-out ${theme.bg}`}>
       
-      {/* Background Patterns - Speed Lines & Halftones */}
-      <div className="absolute inset-0 speed-lines opacity-20 pointer-events-none" />
-      <div className="absolute inset-0 bg-halftone-light opacity-30 pointer-events-none mix-blend-overlay" />
+      {/* --- Dynamic Background Layers --- */}
+
+      {/* 1. Moving Halftone Spots (The Ben-Day Dots) */}
+      <div className="absolute inset-0 opacity-15 pointer-events-none overflow-hidden mix-blend-multiply">
+        <div 
+          className="w-[200%] h-[200%] -translate-x-1/4 -translate-y-1/4 bg-halftone animate-bg-pan halftone-move"
+          style={{ backgroundImage: 'radial-gradient(circle, #000 3px, transparent 4px)' }}
+        />
+      </div>
+
+      {/* 2. Abstract Geometric Debris (Floating Elements) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Triangle Left */}
+        <div className="absolute top-1/4 left-10 w-0 h-0 border-l-[50px] border-l-transparent border-t-[75px] border-t-spider-black border-r-[50px] border-r-transparent opacity-10 rotate-12 animate-float" />
+        {/* Circle Right */}
+        <div className="absolute bottom-1/3 right-12 w-32 h-32 border-4 border-black rounded-full opacity-10 border-dashed animate-float-delayed" />
+        {/* Striped Box Bottom Left */}
+        <div className="absolute bottom-20 -left-10 w-64 h-24 bg-black opacity-5 -rotate-12 animate-float-delayed" 
+             style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #fff 10px, #fff 12px)' }}
+        />
+         {/* Lightning/Crackle Top Right */}
+         <svg className="absolute top-20 right-20 w-48 h-48 opacity-20 animate-pulse" viewBox="0 0 100 100">
+            <path d="M20,20 L50,50 L30,60 L80,90" fill="none" stroke="black" strokeWidth="2" />
+         </svg>
+      </div>
+
+      {/* 3. Static Speed Lines */}
+      <div className="absolute inset-0 speed-lines opacity-20 pointer-events-none z-0" />
       
-      {/* Dynamic Background Glitch Text */}
+      {/* 4. Color Overlay Texture */}
+      <div className="absolute inset-0 bg-halftone-light opacity-30 pointer-events-none mix-blend-overlay z-0" />
+      
+      {/* --- Main Content --- */}
+
+      {/* Dynamic Background Glitch Text (Behind Traffic Light) */}
       <GlitchWord key={glitchTrigger} word={currentWord} color={lightState} />
 
       {/* Comic Book Frame Borders */}
       <div className="absolute inset-0 border-[20px] border-black pointer-events-none z-50 opacity-100 hidden md:block" />
 
-      {/* Abstract Animated Lines */}
+      {/* Abstract Animated Lines (Foreground) */}
       <svg className="absolute top-0 left-0 w-full h-full pointer-events-none z-10">
         <line x1="-10%" y1="20%" x2="110%" y2="80%" stroke="black" strokeWidth="4" strokeDasharray="100,50" className="opacity-20 animate-pulse" />
         <line x1="-10%" y1="80%" x2="110%" y2="20%" stroke="white" strokeWidth="8" className="opacity-30 mix-blend-overlay" />
@@ -68,7 +98,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Content Area */}
+      {/* Main Traffic Light Component */}
       <div className="relative flex-grow flex justify-center items-center pb-20 scale-90 md:scale-100">
         <TrafficLight currentColor={lightState} onToggle={handleToggle} />
       </div>
