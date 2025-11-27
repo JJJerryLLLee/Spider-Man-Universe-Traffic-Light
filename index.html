@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="An interactive Spider-Verse inspired art experience. Tap the light to glitch the multiverse." />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content="Spider-Verse Traffic Light" />
+    <meta property="og:description" content="Interactive abstract art experience featuring glitch aesthetics." />
     <title>Spider-Verse Traffic Light</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +23,7 @@
             },
             colors: {
               'spider-black': '#000000',
-              'spider-orange': '#FF4D00', /* Eye-catching Orange Housing */
+              'spider-orange': '#FF4D00',
               'spider-blue': '#00F3FF',
               'spider-pink': '#FF004D',
               'spider-purple': '#9D00FF',
@@ -31,6 +35,10 @@
               'halftone': "radial-gradient(circle, #000 2px, transparent 2.5px)",
               'halftone-light': "radial-gradient(circle, rgba(255,255,255,0.5) 2px, transparent 2.5px)",
               'halftone-color': "radial-gradient(circle, currentColor 2px, transparent 2.5px)",
+            },
+            willChange: {
+              'transform': 'transform',
+              'opacity': 'opacity',
             },
             animation: {
               'glitch-1': 'glitch-1 0.4s infinite linear alternate-reverse',
@@ -95,6 +103,7 @@
       body {
         background-color: #000;
         overflow: hidden;
+        margin: 0;
       }
       .no-select {
         user-select: none;
@@ -112,6 +121,7 @@
       }
       .halftone-move {
         background-size: 40px 40px;
+        will-change: background-position;
       }
       /* Torn Paper Edge Effect */
       .torn-paper {
@@ -120,6 +130,11 @@
           0% 95%, 2% 93%, 0% 91%, 3% 89%, 0% 87%, 
           0% 10%, 2% 8%, 0% 6%, 3% 4%, 0% 2%
         );
+      }
+      /* Performance optimizations */
+      .gpu-accelerated {
+        transform: translateZ(0);
+        will-change: transform;
       }
     </style>
   <script type="importmap">

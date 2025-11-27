@@ -47,7 +47,7 @@ const App: React.FC = () => {
       {/* --- LAYER 1: Dynamic Background Textures --- */}
 
       {/* 2099 Style Hexagon Grid - Rotating slowly in background */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-10 animate-spin-slow pointer-events-none mix-blend-multiply overflow-hidden">
+      <div className="absolute inset-0 flex items-center justify-center opacity-10 animate-spin-slow pointer-events-none mix-blend-multiply overflow-hidden gpu-accelerated">
         <svg viewBox="0 0 100 100" className="w-[150vmax] h-[150vmax] stroke-black stroke-[0.2] fill-transparent">
            <pattern id="hex" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="scale(1.5)">
              <path d="M5 0 L10 2.5 L10 7.5 L5 10 L0 7.5 L0 2.5 Z" />
@@ -65,8 +65,8 @@ const App: React.FC = () => {
       </div>
 
       {/* Gwen-Style Watercolor Splotches */}
-      <div className="absolute top-[-20%] left-[-20%] w-[50vw] h-[50vw] bg-spider-pink opacity-20 blur-[100px] rounded-full mix-blend-multiply animate-float" />
-      <div className="absolute bottom-[-20%] right-[-20%] w-[60vw] h-[60vw] bg-spider-blue opacity-20 blur-[80px] rounded-full mix-blend-multiply animate-float-delayed" />
+      <div className="absolute top-[-20%] left-[-20%] w-[50vw] h-[50vw] bg-spider-pink opacity-20 blur-[100px] rounded-full mix-blend-multiply animate-float gpu-accelerated" />
+      <div className="absolute bottom-[-20%] right-[-20%] w-[60vw] h-[60vw] bg-spider-blue opacity-20 blur-[80px] rounded-full mix-blend-multiply animate-float-delayed gpu-accelerated" />
 
       {/* --- LAYER 2: Abstract Debris & Glitches --- */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -76,18 +76,18 @@ const App: React.FC = () => {
         <div className="absolute top-[28%] -left-10 w-[35vw] h-1 bg-spider-green opacity-60 rotate-12" />
 
         {/* Triangle Shards */}
-        <div className="absolute top-1/3 left-10 w-0 h-0 border-l-[50px] border-l-transparent border-t-[75px] border-t-spider-black border-r-[50px] border-r-transparent opacity-10 rotate-12 animate-float" />
+        <div className="absolute top-1/3 left-10 w-0 h-0 border-l-[50px] border-l-transparent border-t-[75px] border-t-spider-black border-r-[50px] border-r-transparent opacity-10 rotate-12 animate-float gpu-accelerated" />
         
         {/* Dashed Circle */}
-        <div className="absolute bottom-1/3 right-12 w-48 h-48 border-8 border-spider-black opacity-10 border-dashed animate-float-delayed rounded-full" />
+        <div className="absolute bottom-1/3 right-12 w-48 h-48 border-8 border-spider-black opacity-10 border-dashed animate-float-delayed rounded-full gpu-accelerated" />
         
         {/* Random Floating Rectangles (Tech Debris) */}
-        <div className="absolute top-20 right-1/4 w-12 h-12 border-2 border-spider-blue rotate-45 animate-spin-slow opacity-40" />
+        <div className="absolute top-20 right-1/4 w-12 h-12 border-2 border-spider-blue rotate-45 animate-spin-slow opacity-40 gpu-accelerated" />
         <div className="absolute bottom-40 left-1/4 w-8 h-24 bg-spider-yellow rotate-[-20deg] animate-pulse opacity-30" />
 
         {/* Spider-Punk Torn Paper Effect (Side Bar) */}
         <div className="absolute top-0 right-0 h-full w-24 bg-white opacity-10 torn-paper mix-blend-overlay hidden md:block" />
-        <div className="absolute bottom-0 left-12 w-32 h-64 bg-black opacity-5 -rotate-6 animate-float-delayed" />
+        <div className="absolute bottom-0 left-12 w-32 h-64 bg-black opacity-5 -rotate-6 animate-float-delayed gpu-accelerated" />
       </div>
 
       {/* --- LAYER 3: Comic Elements & Typography --- */}
@@ -103,7 +103,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Floating Onomatopoeia */}
-      <div className="absolute bottom-32 left-8 z-0 opacity-60 rotate-12 animate-float pointer-events-none hidden md:block">
+      <div className="absolute bottom-32 left-8 z-0 opacity-60 rotate-12 animate-float pointer-events-none hidden md:block gpu-accelerated">
         <span className="font-comic text-6xl text-transparent stroke-black" style={{ WebkitTextStroke: '2px black' }}>BZZT!</span>
       </div>
       <div className="absolute top-1/2 right-8 z-0 opacity-30 -rotate-12 animate-pulse pointer-events-none">
@@ -143,7 +143,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Footer / Comic Caption */}
-      <div className="absolute bottom-12 md:bottom-16 bg-white border-4 border-black p-4 z-40 shadow-[8px_8px_0px_#000] -rotate-1 max-w-md mx-4 animate-float-delayed">
+      <div className="absolute bottom-12 md:bottom-16 bg-white border-4 border-black p-4 z-40 shadow-[8px_8px_0px_#000] -rotate-1 max-w-md mx-4 animate-float-delayed gpu-accelerated">
         <div className="absolute -top-3 -left-3 w-4 h-4 bg-spider-pink border-2 border-black"></div>
         <div className="absolute -bottom-3 -right-3 w-4 h-4 bg-spider-green border-2 border-black"></div>
         <p className="font-marker text-lg md:text-xl text-black leading-tight text-center">
@@ -152,7 +152,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Film Grain & Noise Overlay for Texture */}
-      <div className="absolute inset-0 pointer-events-none z-[60] opacity-25 mix-blend-multiply" 
+      <div className="absolute inset-0 pointer-events-none z-[60] opacity-25 mix-blend-multiply gpu-accelerated" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
       </div>
     </div>
