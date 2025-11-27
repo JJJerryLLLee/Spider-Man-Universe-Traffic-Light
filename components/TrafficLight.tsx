@@ -37,30 +37,21 @@ const TrafficLight: React.FC<TrafficLightProps> = ({ currentColor, onToggle }) =
   return (
     <div className="relative z-20 flex flex-col items-center select-none perspective-1000">
       
-      {/* The Wire System - Heavy Black Lines */}
-      <div className="absolute top-0 w-full h-48 pointer-events-none -translate-y-[90%]">
-         <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
-             {/* Main Wire - Thick and Black */}
-            <path 
-              d="M -200 -80 Q 50% 150 200% -80" 
-              fill="none" 
-              stroke="black" 
-              strokeWidth="8"
-              className="drop-shadow-xl"
-            />
-            {/* Highlight on wire */}
-            <path 
-              d="M -200 -84 Q 50% 146 200% -84" 
-              fill="none" 
-              stroke="#444" 
-              strokeWidth="2"
-            />
-         </svg>
+      {/* 
+        THE WIRE: Fixed connection to the top of the screen.
+        We use a very tall div positioned absolutely to ensure it reaches the top boundary 
+        regardless of screen height.
+      */}
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 w-4 h-[200vh] bg-black z-10 border-x-2 border-zinc-800">
+          {/* Pattern on the wire */}
+          <div className="w-full h-full opacity-50" 
+               style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 12px)' }} 
+          />
       </div>
 
-      {/* Hanging Chain/Cable */}
+      {/* Hanging Chain/Cable Segment (The part that joins the light) */}
       <motion.div 
-        className="w-4 h-32 bg-black border-x-2 border-zinc-800 origin-top z-10"
+        className="w-4 h-16 bg-black border-x-2 border-zinc-800 origin-top z-10"
         style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 5px, #333 5px, #333 10px)'}}
         animate={controls}
       />
